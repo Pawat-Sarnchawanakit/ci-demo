@@ -1,6 +1,8 @@
+import math
+
 def average(data):
     """Return the average of a list of numeric values in data."""
-    if len(data)==0:
+    if len(data) == 0:
         raise ValueError("List must contain at least one value")
     return sum(data)/len(data)
 
@@ -29,15 +31,14 @@ def variance(data):
     >>> variance([1000000, 1000004])
     4.0
     """
-    # ugly code.
-    n=len(data)
-    if n==0:
+    n = len(data)
+    if n == 0:
         raise ValueError("List must contain at least one value")
     avg = average(data)
-    return sum( [(x-avg)**2 for x in data] )/n
+    return round(sum((x-avg)**2 for x in data)/n, 14)
 
 
 def stdev(data):
     """the standard deviation of a list of values"""
-    return sqrt(variance(data))
+    return math.sqrt(variance(data))
 
