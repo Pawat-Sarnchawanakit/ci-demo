@@ -1,15 +1,23 @@
 from unittest import TestCase
-from statistics import variance, stdev
+from statistics import variance, stdev, average
 from math import sqrt
 
 
 class StatisticsTest(TestCase):
+
+    def test_average_empty(self):
+        """Average of empty array"""
+        self.assertRaises(ValueError, average, [])
 
     def test_variance_typical_values(self):
         """Variance of typical values"""
         self.assertAlmostEqual(0.0, variance([10.0, 10.0, 10.0, 10.0, 10.0]))
         self.assertAlmostEqual(2.0, variance([1, 2, 3, 4, 5]))
         self.assertAlmostEqual(8.0, variance([10, 2, 8, 4, 6]))
+
+    def test_variance_empty(self):
+        """Variance of empty array"""
+        self.assertRaises(ValueError, variance, [])
 
     def test_variance_non_integers(self):
         """Variance should work with decimal values"""
